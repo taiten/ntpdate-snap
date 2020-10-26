@@ -8,6 +8,9 @@ description: |
 grade: stable # must be 'stable' to release into candidate/stable channels
 confinement: strict # use 'strict' once you have the right plugs and slots
 
+layout:
+  /etc/services:
+    bind-file: $SNAP/etc/services
 
 apps:
   ntpdate-daemon:
@@ -15,11 +18,11 @@ apps:
     daemon: simple
     restart-condition: always
     restart-delay: 30s
-    plugs: [network, network-bind, timezone-control, time-control]
+    plugs: [network, network-bind, time-control]
 
   ntpdate-snap:
     command: usr/sbin/ntpdate
-    plugs: [network, network-bind, timezone-control, time-control]
+    plugs: [network, network-bind, time-control]
 
 parts:
   lighttpd-snap:
