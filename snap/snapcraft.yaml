@@ -1,0 +1,32 @@
+name: ntpdate-snap
+base: core18 # the base snap is the execution environment for this snap
+version: '0.1' # just for humans, typically '1.2+git' or '1.3.2'
+summary: A Simple ntpdate in snap
+description: |
+        This is a simple ntpdate in snap
+        
+grade: stable # must be 'stable' to release into candidate/stable channels
+confinement: strict # use 'strict' once you have the right plugs and slots
+
+
+apps:
+  ntpdate-daemon:
+    command: ntpdate-wrapper.sh
+    daemon: simple
+    restart-condition: always
+    restart-delay: 30s
+    plugs: [network, network-bind, timezone-control, time-control]
+
+  ntpdate-snap:
+    command: usr/sbin/ntpdate
+    plugs: [network, network-bind, timezone-control, time-control]
+
+parts:
+  lighttpd-snap:
+    plugin: nil
+    stage-packages:
+            - ntpdate
+
+  common:
+    plugin: dump
+    source: .
