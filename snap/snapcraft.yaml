@@ -25,7 +25,7 @@ apps:
     plugs: [network, network-bind, time-control]
 
 parts:
-  lighttpd-snap:
+  ntpdate-daemon:
     plugin: nil
     stage-packages:
             - ntpdate
