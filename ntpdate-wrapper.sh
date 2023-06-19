@@ -9,6 +9,6 @@ fi
 
 echo "connecting to $url"
 
-$SNAP/usr/sbin/ntpdate $url
+$SNAP/usr/bin/sntp $url
 
 exit 0

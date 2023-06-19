@@ -1,6 +1,6 @@
 name: ntpdate-snap
-base: core18 
-version: '1.0' 
+base: core22
+version: '2.0'
 summary: A Simple ntpdate in snap
 description: |
         This is a simple ntpdate in snap
@@ -11,6 +11,8 @@ confinement: strict
 layout:
   /etc/services:
     bind-file: $SNAP/etc/services
+  /var/lib/sntp:
+    bind: $SNAP_DATA/var/lib/sntp
 
 apps:
   ntpdate-daemon:
@@ -21,14 +23,14 @@ apps:
     plugs: [network, network-bind, time-control]
 
   ntpdate-snap:
-    command: usr/sbin/ntpdate
+    command: usr/bin/sntp
     plugs: [network, network-bind, time-control]
 
 parts:
   ntpdate-daemon:
     plugin: nil
     stage-packages:
-            - ntpdate
+            - sntp
 
   common:
     plugin: dump

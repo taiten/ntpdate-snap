@@ -7,4 +7,9 @@ if [ "$url" = "" ]; then
   url="time.windows.com"
 fi
 
+if [ ! -f $SNAP_DATA/var/lib/sntp/kod ]; then
+  touch $SNAP_DATA/var/lib/sntp/kod
+  chmod 666 $SNAP_DATA/var/lib/sntp/kod
+fi
+
 exit 0
