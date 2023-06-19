@@ -1,7 +1,9 @@
 # ntpdate-snap
 
 **Update ntpdate-snap is now use sntp command rather than ntpdate**
+
 **ntpdate is a depracated package in upstream**
+
 **Please see the note from ntpdate upstream - https://support.ntp.org/Dev/DeprecatingNtpdate**
 
 This is a ntpdate in a snap
