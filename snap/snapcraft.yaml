@@ -1,5 +1,5 @@
 name: ntpdate-snap
-base: core22
+base: core20
 version: '2.0'
 summary: A Simple ntpdate in snap
 description: |
